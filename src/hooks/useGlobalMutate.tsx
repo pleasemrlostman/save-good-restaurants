@@ -8,7 +8,7 @@ const useGlobalMutate = <
 >(
   axiosCallback: T,
   callbackAfterSuccess: K,
-  isErrorMessage?: boolean
+  isErrorMessage?: boolean,
 ) => {
   const onSuccess = (res: AxiosResponse<K>) => {
     if (res.status === 200) callbackAfterSuccess(res);

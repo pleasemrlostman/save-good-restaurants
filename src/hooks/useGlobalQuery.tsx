@@ -1,4 +1,4 @@
-import api from "@/http";
+import api from "@/api";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
