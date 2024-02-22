@@ -4,7 +4,7 @@ import api from "./api";
 
 function App() {
   const test = async () => {
-    const res = await api("http://localhost:9090/api/jobs");
+    const res = await api("/api/jobs");
     return res;
   };
 
