@@ -9,6 +9,7 @@ import {
 } from "@/zod/user-register/userRegisterScheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/_utils";
+import { Checkbox } from "./components/form/Checkbox";
 
 function App() {
   const test = async () => {
@@ -25,14 +26,22 @@ function App() {
       id: "",
       password: "",
       passwordCheck: "",
+      allCheck: false,
+      check: {
+        a: false,
+        b: false,
+        c: false,
+      },
     },
     resolver: zodResolver(registerSchema),
   });
 
   const onSubmit = (data: RegisterSchemaType) => {
+    // console.log("data", data);
     data;
   };
   const onError = (err: FieldErrors<RegisterSchemaType>) => {
+    // console.log("err", err);
     err;
   };
 
@@ -60,6 +69,10 @@ function App() {
           control={methods.control}
           withErrorMessage
         />
+        <Checkbox name="allCheck" control={methods.control} />
+        <Checkbox name="check.a" control={methods.control} value="0" />
+        <Checkbox name="check.b" control={methods.control} value="1" />
+        <Checkbox name="check.c" control={methods.control} value="2" />
         <input
           className={cn(
             "border",

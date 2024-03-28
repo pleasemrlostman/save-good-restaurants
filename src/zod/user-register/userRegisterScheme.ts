@@ -32,13 +32,22 @@ export const registerSchema = z
         required_error: "비밀번호를 다시 입력해주세요",
       })
       .nonempty("비밀번호를 다시 입력해주세요."),
-    // recommendationCode: z
-    //   .string()
-    //   .regex(/^[a-z]{0,}$/, "추천코드는 소문자로 입력 가능합니다")
-    //   .optional(),
-    // agree: z.string(),
+    allCheck: z.boolean(),
+    check: z.object({
+      a: z.boolean(),
+      b: z.boolean(),
+      c: z.boolean(),
+    }),
   })
   .refine((data) => data.password === data.passwordCheck, {
     path: ["passwordCheck"],
     message: "비밀번호가 일치하지 않습니다.",
+  })
+  .refine((data) => data.check.a, {
+    path: ["check.a"],
+    message: "a, 체크해주셈",
+  })
+  .refine((data) => data.check.a, {
+    path: ["check.b"],
+    message: "b, 체크해주셈",
   });
